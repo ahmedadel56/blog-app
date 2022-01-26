@@ -1,5 +1,5 @@
 class Posts < ApplicationRecord
-  belongs_to :user
+  belongs_to :Users
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
   def recent_comments
