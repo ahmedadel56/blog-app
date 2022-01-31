@@ -1,0 +1,21 @@
+<section>
+  <div>
+    <h2><%= @post.title %></h2>
+    <p>
+      Comments: <%= @post.comments_counter %>, Likes:<%= @post.likes_counter %>
+    </p>
+  </div>
+  <p>
+    <%= @post.text %>
+  </p>
+</section>
+
+<% unless @post.comments.empty? %>
+<section class="posts-section-comments d-flex">
+<% @post.comments.each do |comment| %>
+      <p class="users-comment">
+       <%= comment.user.name %>: <%= comment.text %>
+     </p>
+    <% end %>
+    </section>
+    <% end %>

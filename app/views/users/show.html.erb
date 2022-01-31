@@ -1,2 +1,29 @@
-<h1>User</h1>
-<p>Here all details about spacific user</p>
+<div>
+  <div>
+    <h2><%= @user.name %></h2>
+    <p>
+      <a href="/users/<%=@user.id%>/posts/">Number of posts: <%= @posts.length %></a>
+    </p>
+  </div>
+</div>
+
+<div>
+  <h2>Bio</h2>
+  <p><%= @user.bio %></p>
+</div>
+
+<div recent-posts">
+  <% @posts.each do |post| %>
+  <div>
+    <h2>
+     <a href="/users/<%=@user.id%>/posts/<%=post.id%>"><%= post.title%></a>
+    </h2>
+    <p><%= post.text %></p>
+    <p >Comments: <%= post.comments_counter %>, Likes: <%= post.likes_counter %></p>
+  </div>
+  <%end %>
+</div>
+
+<div>
+  <a href="/users/<%=@user.id%>/posts/">See all posts</a>
+</div>
