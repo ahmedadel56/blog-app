@@ -6,7 +6,7 @@ class CommentsController < ApplicationController
         user_id: current_user.id,
         post_id: @post.id
       )
-      new_comment.update_commment_count
+      new_comment.update_comments_counter
       if new_comment.save
         redirect_to "/users/#{@post.user_id}/posts/#{@post.id}", notice: 'Success!'
       else
