@@ -1,0 +1,22 @@
+.posts-section,
+.posts-section-comments {
+  margin: 0 10%;
+  border: 1px solid gray;
+  border-radius: 8px;
+}
+
+.posts-section {
+  padding: 3%;
+  margin-top: 20px;
+}
+
+.post-header {
+  justify-content: space-between;
+  margin: 0 1%;
+}
+
+.posts-section-comments {
+  flex-direction: column;
+  padding: 0 3%;
+  margin-top: 20px;
+}

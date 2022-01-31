@@ -1,6 +1,9 @@
 <% @users.each do |user| %>
-<div>
-  <div>
+<div class="user-container d-flex">
+  <div class="user-img">
+    <%= image_tag("user/user_logo.png", width:'100%', height:'100%') %>
+  </div>
+  <div class="user-data d-flex">
     <h2><a href="/users/<%=user.id%>"><%= user.name %></a></h2>
     <p>
       <a href="/users/<%=user.id%>/posts/"> Number of posts: <%= user.posts_counter %></a>

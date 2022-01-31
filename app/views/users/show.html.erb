@@ -1,5 +1,8 @@
-<div>
-  <div>
+<div class="user-container d-flex">
+  <div class="user-img">
+    <%= image_tag("user/user_logo.png", width:'100%', height:'100%') %>
+  </div>
+  <div class="user-data d-flex">
     <h2><%= @user.name %></h2>
     <p>
       <a href="/users/<%=@user.id%>/posts/">Number of posts: <%= @posts.length %></a>
@@ -7,23 +10,23 @@
   </div>
 </div>
 
-<div>
-  <h2>Bio</h2>
-  <p><%= @user.bio %></p>
+<div class="bio-data">
+  <h2 class="bio-span">Bio</h2>
+  <p class="bio-body"><%= @user.bio %></p>
 </div>
 
-<div recent-posts">
+<div class="recent-posts">
   <% @posts.each do |post| %>
-  <div>
+  <div class="recent-posts posts-details d-flex">
     <h2>
      <a href="/users/<%=@user.id%>/posts/<%=post.id%>"><%= post.title%></a>
     </h2>
-    <p><%= post.text %></p>
-    <p >Comments: <%= post.comments_counter %>, Likes: <%= post.likes_counter %></p>
+    <p class="posts-body"><%= post.text %></p>
+    <p class="posts-counters">Comments: <%= post.comments_counter %>, Likes: <%= post.likes_counter %></p>
   </div>
   <%end %>
 </div>
 
-<div>
+<div class="see-posts d-flex">
   <a href="/users/<%=@user.id%>/posts/">See all posts</a>
 </div>

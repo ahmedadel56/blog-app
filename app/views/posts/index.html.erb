@@ -1,22 +1,25 @@
-<section>
-  <div>
+<section class="user-container d-flex">
+  <div class="user-img">
+    <%= image_tag("user/user_logo.png", width:'100%', height:'100%') %>
+  </div>
+  <div class="user-data d-flex">
     <h2><%= @user.name %></h2>
     <p>Number of posts: <%= @user.posts_counter %></p>
   </div>
 </section>
 
 <% @posts.each do |post| %>
-<section>
-  <div>
-    <div>
-      <h2><a href="/users/<%= @user.id %>/posts/<%=post.id%>"><%= post.title %></a></h2>
-      <p><%= post.text %></p>
-      <p>Comments: <%= post.comments_counter %>, Likes: <%= post.likes_counter %></p>
+<section class="comments-section">
+  <div class="posts-container">
+    <div class="posts-details d-flex">
+      <h2 class="posts-id"><a href="/users/<%= @user.id %>/posts/<%=post.id%>"><%= post.title %></a></h2>
+      <p class="posts-body"><%= post.text %></p>
+      <p class="posts-counters">Comments: <%= post.comments_counter %>, Likes: <%= post.likes_counter %></p>
     </div>
     <% unless post.recent_comments.empty? %>
-    <div>
+    <div class="posts-comments d-flex">
     <% post.recent_comments.each do |comment| %>
-      <p>
+      <p class="users-comment">
        <%= comment.user.name %>: <%= comment.text %>
      </p>
     <% end %>
