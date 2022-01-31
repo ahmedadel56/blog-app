@@ -1,0 +1,36 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.user-container {
+  justify-content: space-around;
+  align-items: center;
+  padding: 20px 5%;
+}
+
+.user-img {
+  width: 110px;
+}
+
+.user-data {
+  width: 75%;
+  height: 85px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 4%;
+  border: 2px solid gray;
+  border-radius: 8px;
+}
+
+.user-data > p {
+  align-self: flex-end;
+}

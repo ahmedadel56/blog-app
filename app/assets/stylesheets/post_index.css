@@ -1,0 +1,25 @@
+.comments-section {
+  padding: 0 5%;
+}
+
+.posts-details,
+.posts-comments {
+  flex-direction: column;
+  margin: 0 1%;
+  border: 1px solid gray;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.posts-comments {
+  margin-bottom: 20px;
+}
+
+.posts-details {
+  margin-bottom: 15px;
+}
+
+.posts-counters {
+  align-self: flex-end;
+  margin-right: 3%;
+}

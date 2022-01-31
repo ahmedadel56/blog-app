@@ -1,2 +1,32 @@
-<h1>User </h1>
-<p>Here all details about spacific user</p>
+<div class="user-container d-flex">
+  <div class="user-img">
+    <%= image_tag("user/user_logo.png", width:'100%', height:'100%') %>
+  </div>
+  <div class="user-data d-flex">
+    <h2><%= @user.name %></h2>
+    <p>
+      <a href="/users/<%=@user.id%>/posts/">Number of posts: <%= @posts.length %></a>
+    </p>
+  </div>
+</div>
+
+<div class="bio-data">
+  <h2 class="bio-span">Bio</h2>
+  <p class="bio-body"><%= @user.bio %></p>
+</div>
+
+<div class="recent-posts">
+  <% @posts.each do |post| %>
+  <div class="recent-posts posts-details d-flex">
+    <h2>
+     <a href="/users/<%=@user.id%>/posts/<%=post.id%>"><%= post.title%></a>
+    </h2>
+    <p class="posts-body"><%= post.text %></p>
+    <p class="posts-counters">Comments: <%= post.comments_counter %>, Likes: <%= post.likes_counter %></p>
+  </div>
+  <%end %>
+</div>
+
+<div class="see-posts d-flex">
+  <a href="/users/<%=@user.id%>/posts/">See all posts</a>
+</div>
