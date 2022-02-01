@@ -15,16 +15,16 @@
       <h2 class="posts-id"><a href="/users/<%= @user.id %>/posts/<%=post.id%>"><%= post.title %></a></h2>
       <p class="posts-body"><%= post.text %></p>
       <p class="posts-counters">Comments: <%= post.comments_counter %>, Likes: <%= post.likes_counter %></p>
-    </div>
     <% unless post.recent_comments.empty? %>
     <div class="posts-comments d-flex">
     <% post.recent_comments.each do |comment| %>
       <p class="users-comment">
-       <%= comment.user.name %>: <%= comment.text %>
-     </p>
+       <a href = <%=user_path(comment.user.id)%>><%= comment.user.name %></a>: <%= comment.text %>
+      </p>
     <% end %>
     </div>
     <% end %>
+    </div>
   </div>
 </section>
 <%end%>

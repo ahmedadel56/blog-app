@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
-  resources :users, only: [:index, :show] do
-    resources :posts, only: [:index, :show]
-  end
-  root to: 'users#index'
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  root 'users#index'
+    resources :users, only: [:index, :show] do
+      resources :posts, only: [:index, :new, :create, :show]
+    end
 
-  # Defines the root path route ("/")
-end
+    resources :posts do
+      resources :comments, only: [:create, :new]
+      resources :likes, only: [:create]
+    end
+  end

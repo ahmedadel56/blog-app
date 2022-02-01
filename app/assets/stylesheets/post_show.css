@@ -10,7 +10,35 @@
   margin-top: 20px;
 }
 
+.post-stat-btns {
+  height: 35px;
+  width: fit-content;
+  background: rgb(36, 131, 79);
+  color: white;
+  border-radius: 7px;
+  border: none;
+  margin: 0 5px;
+}
+
+.like-btn {
+  background: rgb(116, 116, 116);
+}
+
+.not-liked {
+  cursor: pointer;
+}
+
+.not-liked:hover {
+  background: rgb(25, 161, 161);
+}
+
+.liked {
+  background: rgb(25, 161, 161);
+  cursor: unset;
+}
+
 .post-header {
+  align-items: center;
   justify-content: space-between;
   margin: 0 1%;
 }
@@ -19,4 +47,92 @@
   flex-direction: column;
   padding: 0 3%;
   margin-top: 20px;
+}
+
+/* css for post new */
+
+.post-create-header {
+  text-align: center;
+}
+
+.form-container {
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.title-section {
+  flex-direction: column;
+  align-items: center;
+  font-size: 2rem;
+}
+
+.title-section > h3 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: brown;
+}
+
+.from-input > input,
+.from-input > textarea {
+  outline: none;
+  padding: 3px 2%;
+  border: 2px solid rgb(136, 136, 136);
+  font-size: 2.5rem;
+  border-radius: 8px;
+  margin: 10px 0;
+}
+
+.body-section {
+  justify-content: center;
+  width: 100%;
+}
+
+.body-section > textarea {
+  width: 80%;
+  height: 350px;
+  font-size: 2rem;
+}
+
+.submit-btn {
+  cursor: pointer;
+  color: white;
+  height: 50px;
+  width: 100px;
+  border: none;
+  border-radius: 8px;
+  background: rgb(129, 129, 129);
+}
+
+.submit-btn:hover {
+  background: rgb(36, 128, 36);
+}
+
+.comment-container {
+  flex-direction: column;
+}
+
+.comment-container > textarea {
+  margin-top: 10px;
+  height: 70px;
+  font-size: 1.2rem;
+  padding: 5px;
+  border-radius: 5px;
+  resize: none;
+}
+
+.comment-btn {
+  margin: 10px 0;
+  align-self: flex-end;
+}
+
+.comment-container > textarea:focus {
+  border: 1.5px solid rgb(32, 100, 146);
+  outline: none;
+}
+
+.from-input > input:focus,
+.from-input > textarea:focus {
+  outline: none;
 }
