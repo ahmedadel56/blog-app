@@ -1,0 +1,7 @@
+<%= form_with url: "/posts/#{@post.id}/likes", scope: :like do |form| %>
+  <% if @like%>
+  <button disabled>Like</button>
+  <%else%>
+  <%= form.submit "submit"%>
+  <%end%>
+<% end %>

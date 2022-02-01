@@ -1,21 +1,26 @@
 <section class="posts-section">
   <div class="post-header d-flex">
     <h2 class="post-title"><%= @post.title %></h2>
-    <p class="post-data-counter">
-      Comments: <%= @post.comments_counter %>, Likes:<%= @post.likes_counter %>
-    </p>
+    <div class="post-data-counter d-flex">
+    <button class="post-stat-btns unclickble">Comments: <%= @post.comments_counter %></button>
+    <button class="post-stat-btns unclickble">Likes: <%= @post.likes_counter %></button>
+    <%= render partial: "create_like", local: @post %>
+    </div>
   </div>
   <p class="post-data-counter">
     <%= @post.text %>
   </p>
 </section>
 
-<% unless @post.comments.empty? %>
+
 <section class="posts-section-comments d-flex">
+<% unless @post.comments.empty? %>
 <% @post.comments.each do |comment| %>
       <p class="users-comment">
-       <%= comment.user.name %>: <%= comment.text %>
-     </p>
+      <a href = <%=user_path(comment.user.id)%>><%= comment.user.name %></a>: <%= comment.text %>
+      </p>
     <% end %>
+    <% end %>
+    <%= render partial: "create_comment", local: { post: @post, like: @like } %>
     </section>
-    <% end %>
+    
