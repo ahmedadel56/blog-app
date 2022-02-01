@@ -11,6 +11,24 @@ a {
   display: flex;
 }
 
+.add-post-btn {
+  justify-content: center;
+  margin: 10px 0 10px 5%;
+}
+
+.add-post-btn > a {
+  color: white;
+  border: 1px solid gray;
+  border-radius: 8px;
+  padding: 4px 7px;
+  background: gray;
+}
+
+.add-post-btn > a:hover {
+  background: rgb(36, 128, 36);
+  border-color: rgb(36, 128, 36);
+}
+
 .user-container {
   justify-content: space-around;
   align-items: center;
