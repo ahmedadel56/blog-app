@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe 'USERS', type: :request do
-  describe 'USERS GET #index' do
-    before(:example) { get('/users#index') }
+RSpec.describe 'POSTS', type: :request do
+  describe 'GET POSTS #index' do
+    before(:example) { get('/users/15/posts#index') }
 
     it 'server return 200 server ok' do
       expect(response).to have_http_status(200)
@@ -13,12 +13,12 @@ RSpec.describe 'USERS', type: :request do
     end
 
     it 'shows body content of index' do
-      expect(response.body).to include('<h1>list of users is here</h1>')
+      expect(response.body).to include('<h1>show the posts of a user</h1>')
     end
   end
 
-  describe 'USERS GET #show' do
-    before(:example) { get('/users/156') }
+  describe 'GET POSTS #show' do
+    before(:example) { get('/users/15/posts/20') }
 
     it 'return 200' do
       expect(response).to have_http_status(:ok)
@@ -28,8 +28,8 @@ RSpec.describe 'USERS', type: :request do
       expect(response).to render_template(:show)
     end
 
-    it 'shows body content of USERS#show' do
-      expect(response.body).to include('<h1>user detail by id</h1>')
+    it 'shows body content of posts/show' do
+      expect(response.body).to include("<h1>show post's details</h1>")
     end
   end
 end
