@@ -1,5 +1,8 @@
+    <%if user_signed_in?%>
+<%= button_to "Logout", destroy_user_session_path, :method => :delete %>
+
 <div class="add-post-btn d-flex">
-  <a href ="/users/<%= @current_user.id %>/posts/new" >Add a new post</a>
+<%= link_to "Add a new post", new_user_post_path(current_user.id) %>
 </div>
 
 <% @users.each do |user| %>
@@ -15,3 +18,7 @@
   </div>
 </div>
 <%end %>
+
+    <%else%>
+     <%= render partial: "not_logged"%>
+    <%end %>
