@@ -52,3 +52,28 @@ a {
 .user-data > p {
   align-self: flex-end;
 }
+
+.notlogged-header {
+  text-align: center;
+}
+
+.notlooged-btn-container {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+}
+
+.notlogged-btn {
+  border-radius: 8px;
+  padding: 4px 10px;
+  color: white;
+  margin: 0 30px;
+}
+
+.signin {
+  background-color: rgb(50, 143, 205);
+}
+
+.create {
+  background-color: rgb(205, 50, 50);
+}
