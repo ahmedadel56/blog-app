@@ -1,0 +1,3 @@
+<% if can? :destroy, @post%>
+    <%=button_to 'Delete', {:controller => :posts, :action => 'destroy', :id => @post.id}, :method => :delete%> 
+<% end %>
