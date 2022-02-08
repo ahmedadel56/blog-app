@@ -18,6 +18,7 @@ class CommentsController < ApplicationController
       flash[:error] = "Couldn\'t create the comment"
     end
   end
+
   def destroy
     @post = Post.includes(:comments).find(params[:post_id])
     @comment = @post.comments.find(params[:id])
@@ -27,6 +28,7 @@ class CommentsController < ApplicationController
     redirect_to("/users/#{current_user.id}/posts/#{@post.id}")
     flash[:success] = 'Comment was deleted!'
   end
+
   private
 
   def comment_params

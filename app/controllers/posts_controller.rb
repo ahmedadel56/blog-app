@@ -31,6 +31,7 @@ class PostsController < ApplicationController
       end
     end
   end
+
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
@@ -40,6 +41,7 @@ class PostsController < ApplicationController
     redirect_to("/users/#{current_user.id}")
     flash[:success] = 'Post was destroyed!'
   end
+
   private
 
   def post_params
