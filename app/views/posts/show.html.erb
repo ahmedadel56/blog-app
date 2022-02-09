@@ -1,6 +1,6 @@
 <section class="posts-section">
   <div class="post-header d-flex">
-    <h2 class="post-title"><%= @post.title %></h2>
+    <h2 class="post-title"><%= @post.title %> by <%= @user.name %></h2>
     <div class="post-data-counter d-flex">
     <button class="post-stat-btns unclickble">Comments: <%= @post.comments_counter %></button>
     <button class="post-stat-btns unclickble">Likes: <%= @post.likes_counter %></button>

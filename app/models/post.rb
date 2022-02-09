@@ -7,6 +7,7 @@ class Post < ApplicationRecord
   has_many :comments, dependent: :delete_all
   def update_posts_counter
     user.increment!(:posts_counter)
+    user.save
   end
 
   def recent_comments
