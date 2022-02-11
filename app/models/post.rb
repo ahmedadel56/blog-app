@@ -5,12 +5,16 @@ class Post < ApplicationRecord
   belongs_to :user
   has_many :likes, dependent: :delete_all
   has_many :comments, dependent: :delete_all
-  def update_posts_counter
+
+  after_create :update_post_counter
+
+  def update_post_counter
+    user = User.find(user_id)
     user.increment!(:posts_counter)
     user.save
   end
 
-  def recent_comments
-    comments.last(5)
+  def most_recent_comments
+    Comment.where(post_id: id).order(created_at: :desc).limit(5)
   end
 end

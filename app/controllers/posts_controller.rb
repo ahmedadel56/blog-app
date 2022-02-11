@@ -1,51 +1,50 @@
 class PostsController < ApplicationController
-  load_and_authorize_resource
-  before_action :authenticate_user!
+  # GET /posts
   def index
-    @user = User.find(params[:user_id])
-    @posts = @user.posts.includes(:comments)
-  end
-
-  def show
-    @user = User.find(params[:user_id])
-    @post = @user.posts.find(params[:id])
-    @like = current_user.likes.where(post_id: params[:id]).exists?
-  end
-
-  def new
-    @post = Post.new
-  end
-
-  def create
-    new_post = current_user.posts.new(post_params)
-    new_post.likes_counter = 0
-    new_post.comments_counter = 0
-    new_post.update_posts_counter
+    id = params[:user_id]
+    @user = User.find(id)
+    @posts = Post.includes(:user).where("user_id = #{id}").references(:user).order(id: :desc)
+    @all_posts = Post.all
     respond_to do |format|
-      format.html do
-        if new_post.save
-          flash[:notice] = 'Post created successfully'
-          redirect_to "/users/#{new_post.user.id}/posts/"
-        else
-          flash[:error] = "Couldn't create post"
-        end
-      end
+      format.html # index.html.erb
+      format.json { render json: @all_posts }
     end
   end
 
+  # GET post/comments
+  def show
+    post_id = params[:id]
+    @post = Post.find(post_id)
+    @user = User.find(@post.user_id)
+    @comments = Comment.includes(:post).where("post_id = #{post_id}").references(:post)
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @comments }
+    end
+  end
+
+  def new
+    @new_post = Post.new
+    @current_user = User.find(params[:user_id])
+  end
+
+  def create
+    @current_user = User.find(params[:user_id])
+    returned_values = post_params
+    @new_post = @current_user.post.create(returned_values)
+    redirect_to user_posts_path
+  end
+
   def destroy
+    @user = User.find(params[:user_id])
     @post = Post.find(params[:id])
     @post.destroy
-    @user = User.find(@post.user_id)
-    @user.posts_counter -= 1
-    @user.save
-    redirect_to("/users/#{current_user.id}")
-    flash[:success] = 'Post was destroyed!'
+    redirect_to user_posts_path
   end
 
   private
 
   def post_params
-    params.require(:data).permit(:title, :text)
+    params.require(:post).permit(:title, :text, :comments_counter, :likes_counter, :user_id)
   end
 end
